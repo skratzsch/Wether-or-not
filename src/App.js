@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Form from "./components/Form";
-import List from "./components/List"; // Stelle sicher, dass der Pfad korrekt ist
+import List from "./components/List";
 import "./App.css";
 
 function App() {
