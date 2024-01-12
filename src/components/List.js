@@ -1,18 +1,21 @@
 import React from 'react';
 
-function List({ activities }) {
-  if (!activities || activities.length === 0) {
-    return <p>Keine Aktivitäten vorhanden.</p>;
-  }
-
+function List({ activities, isGoodWeather }) {
   return (
-    <ul>
-      {activities.map(activity => (
-        <li key={activity.id}>
-          {activity.name} - {activity.isForGoodWeather ? 'Gutes Wetter' : 'Schlechtes Wetter'}
-        </li>
-      ))}
-    </ul>
+    <div>
+      <h2>{isGoodWeather ? 'Das Wetter ist super, geh raus und tob dich aus!' : 'Aktivitäten für schlechtes Wetter'}</h2>
+      <ul>
+        {activities.length > 0 ? (
+          activities.map(activity => (
+            <li key={activity.id}>
+              {activity.name}
+            </li>
+          ))
+        ) : (
+          <p>Keine Aktivitäten vorhanden.</p>
+        )}
+      </ul>
+    </div>
   );
 }
 

@@ -5,6 +5,7 @@ import "./App.css";
 
 function App() {
   const [activities, setActivities] = useState([]);
+  const isGoodWeather = true;
 
   useEffect(() => {
     const storedActivities = localStorage.getItem('activities');
@@ -19,13 +20,14 @@ function App() {
 
   const handleAddActivity = (newActivity) => {
     setActivities(prevActivities => [...prevActivities, newActivity]);
-    console.log("Neue Aktivität hinzugefügt:", newActivity);
   };
+
+  const filteredActivities = activities.filter(activity => activity.isForGoodWeather === isGoodWeather);
 
   return (
     <div className="App">
+      <List activities={filteredActivities} isGoodWeather={isGoodWeather} />
       <Form onAddActivity={handleAddActivity} />
-      <List activities={activities} />
     </div>
   );
 }
