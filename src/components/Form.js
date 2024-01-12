@@ -1,40 +1,36 @@
 import React, { useState, useRef } from "react";
+import { uid } from "uid";
 
-function createUid() {
-  return Date.now().toString(36) + Math.random().toString(36);
-}
 
 export default function Form({ onAddActivity }) {
   const [name, setName] = useState("");
   const [isForGoodWeather, setIsForGoodWeather] = useState(false);
-  const nameInputRef = useRef(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     const activityData = {
-      id: createUid(),
+      id: uid(),
       name,
       isForGoodWeather,
     };
     onAddActivity(activityData);
     setName("");
     setIsForGoodWeather(false);
-    nameInputRef.current.focus();
+    document.getElementById("activity-name").focus();
+    console.log(activityData)
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <h2>Aktivitätsplaner</h2>
       <div>
-        <label>
-          Aktivitätsname:
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            ref={nameInputRef}
-          />
-        </label>
+        <label htmlFor="activity-name">Aktivitätsname:</label>
+        <input
+          id="activity-name"
+          type="text"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+        />
       </div>
       <div>
         <label>
@@ -42,7 +38,7 @@ export default function Form({ onAddActivity }) {
           <input
             type="checkbox"
             checked={isForGoodWeather}
-            onChange={(e) => setIsForGoodWeather(e.target.checked)}
+            onChange={(event) => setIsForGoodWeather(event.target.checked)}
           />
         </label>
       </div>
