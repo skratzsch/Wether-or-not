@@ -17,7 +17,6 @@ export default function Form({ onAddActivity }) {
     setName("");
     setIsForGoodWeather(false);
     document.getElementById("activity-name").focus();
-    console.log(activityData)
   };
 
   return (
