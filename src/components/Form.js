@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 
-function uid() {
+function createUid() {
   return Date.now().toString(36) + Math.random().toString(36);
 }
 
@@ -12,7 +12,7 @@ export default function Form({ onAddActivity }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const activityData = {
-      id: uid(),
+      id: createUid(),
       name,
       isForGoodWeather,
     };
