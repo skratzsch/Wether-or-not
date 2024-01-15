@@ -1,4 +1,9 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const StyledList = styled.div`
+  margin-bottom: 10px;
+`;
 
 function List({ activities, isGoodWeather, onDeleteActivity }) {
   return (

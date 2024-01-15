@@ -1,6 +1,25 @@
 import React, { useState, useRef } from "react";
 import { uid } from "uid";
+import styled from 'styled-components';
 
+
+const StyledForm = styled.form`
+  display: inline-block;
+  text-align: left;
+  margin-top: 20px;
+
+  div {
+    margin-bottom: 10px;
+  }
+
+  label {
+    margin-right: 10px;
+  }
+
+  button {
+    margin-top: 10px;
+  }
+`;
 
 export default function Form({ onAddActivity }) {
   const [name, setName] = useState("");
@@ -20,7 +39,7 @@ export default function Form({ onAddActivity }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit}>
       <h2>Aktivitätsplaner</h2>
       <div>
         <label htmlFor="activity-name">Aktivitätsname:</label>
@@ -42,6 +61,6 @@ export default function Form({ onAddActivity }) {
         </label>
       </div>
       <button type="submit">Absenden</button>
-    </form>
+    </StyledForm>
   );
 }

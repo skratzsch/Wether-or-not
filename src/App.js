@@ -1,7 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import Form from './components/Form';
 import List from './components/List';
-import './App.css';
+import styled from 'styled-components';
+import backgroundImage from './components/weather-background.png';
+
+const StyledApp = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url(${backgroundImage});
+  background-size: cover;
+  background-position: center;
+`;
+
+
 
 function App() {
   const [activities, setActivities] = useState([]);
@@ -45,14 +60,15 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <StyledApp>
       <header>
         <h1>{weather.condition} {weather.temperature}°C</h1>
       </header>
-      <List activities={filteredActivities} isGoodWeather={weather.isGoodWeather}  onDeleteActivity={handleDeleteActivity}/>
+      <List activities={filteredActivities} isGoodWeather={weather.isGoodWeather} onDeleteActivity={handleDeleteActivity}/>
       <Form onAddActivity={handleAddActivity} />
-    </div>
+    </StyledApp>
   );
 }
 
 export default App;
+      
